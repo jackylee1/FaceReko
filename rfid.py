@@ -2,25 +2,29 @@ import RPi.GPIO as GPIO
 import MFRC522
 import signal, time
 import FaceReko
-from gpiozero import LED
+from gpiozero import LED, Buzzer
 
 uid = None
 hid = [136, 4, 75, 165, 98]
 prev_uid = None 
 continue_reading = True
 
-#Declare LEDs
+#Declare LEDs and buzzer
 ledRED = LED(21)
 ledGREEN = LED(20)
+buz = Buzzer(26)
 
 #Set Red light
 ledRED.on()
 
-#Change Red to green for 10 seconds
+#Change Red to green for 10 seconds, buzz 2 seconds
 def allowAccess():
 	ledRED.off()
 	ledGREEN.on()
-	time.sleep(10)
+	buz.on()
+	time.sleep(2)
+	buz.off()
+	time.sleep(8)
 	ledGREEN.off()
 	ledRED.on()
 
@@ -59,7 +63,13 @@ while continue_reading:
 			allow = FaceReko.main()
 			if allow==True:
 				allowAccess()
-
-
-	#Prevents continuous card scan spam. Waits 10 seconds before next scan
+			else:
+				buz.on()
+				buz.off()
+				buz.on()
+				buz.off()
+				buz.on()
+				buz.off()
+				
+	#Prevents continuous card scan spam. Waits 2 seconds before next scan
 	time.sleep(2)
