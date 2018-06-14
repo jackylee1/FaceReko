@@ -8,6 +8,7 @@ uid = None
 hid = [136, 4, 75, 165, 98]
 prev_uid = None 
 continue_reading = True
+allow = False
 
 #Declare LEDs and buzzer
 ledRED = LED(21)
@@ -27,6 +28,13 @@ def allowAccess():
 	time.sleep(8)
 	ledGREEN.off()
 	ledRED.on()
+
+#Causes buzzer to sound for 1 second
+def buzz1sec():
+	buz.on()
+	time.sleep(1)
+	buz.off()
+	time.sleep(1)
 
 # Capture SIGINT for cleanup when the script is aborted
 def end_read(signal,frame):
@@ -59,17 +67,15 @@ while continue_reading:
 		(status,uid) = mfrc522.MFRC522_Anticoll()
 		if uid==hid:
 			prev_uid = uid
-			print("Card {} detected, Facial reko active".format(uid))
+			buzz1sec()
+			print("Card {} detected, Facial reko activated".format(uid))
 			allow = FaceReko.main()
 			if allow==True:
 				allowAccess()
 			else:
-				buz.on()
-				buz.off()
-				buz.on()
-				buz.off()
-				buz.on()
-				buz.off()
+				buzz1sec()
+				buzz1sec()
+				buzz1sec()
 				
 	#Prevents continuous card scan spam. Waits 2 seconds before next scan
 	time.sleep(2)
