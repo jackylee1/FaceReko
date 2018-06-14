@@ -90,7 +90,7 @@ def main():
 			print 'No face matches detected...' 
 
 	else :
-		print "[-] No faces detected..."
+		print "No faces detected..."
         
 if __name__ == '__main__':
     main()
