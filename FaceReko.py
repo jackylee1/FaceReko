@@ -34,7 +34,7 @@ def check_matches(client, file):
 
     return face_matches, response
 
-count = 3
+count = 2
 camera = PiCamera()
 
 def main():
@@ -45,31 +45,31 @@ def main():
 	except:
 		print("Error connecting to mySQL database")
 	
-	#directory = '/home/pi/pi-detector/faces'
+	directory = 'images'
 
-	#if not os.path.exists(directory):
-	#	os.makedirs(directory)
+	if not os.path.exists(directory):
+		os.makedirs(directory)
 
-	print '[+] A photo will be taken in 3 seconds...'
+	print 'A photo will be taken in 2 seconds...'
 
 	for i in range(count):
 		print (count - i)
 		time.sleep(1)
 
-	
-	image = 'image_current.jpg'
+	milli = int(round(time.time() * 1000))
+	image = '{0}/image_{1}.jpg'.format(directory, milli)
 	camera.capture(image)
 	print 'Your image was saved to %s' % image
 	
 	client = get_client()
     
-	print '[+] Running face checks against image...'
-	result, resp = check_face(client, 'image_current.jpg')
+	print 'Running face checks against image...'
+	result, resp = check_face(client, image)
 
 	if (result):
-		print '[+] Face(s) detected with %r confidence...' % (round(resp['FaceDetails'][0]['Confidence'], 2))
-		print '[+] Checking for a face match...'
-		resu, res = check_matches(client, 'image_current.jpg')
+		print 'Face(s) detected with %r confidence...' % (round(resp['FaceDetails'][0]['Confidence'], 2))
+		print 'Checking for a face match...'
+		resu, res = check_matches(client, image)
     
 		if (resu):
 			person = res['FaceMatches'][0]['Face']['ExternalImageId']
@@ -77,9 +77,9 @@ def main():
 			confidence = round(res['FaceMatches'][0]['Face']['Confidence'], 2)
 			print 'Identity matched %s with %r similarity and %r confidence...' % (person, similarity, confidence)
 			
-			sql = "INSERT into AccessLog (Name, Time, Similarity, Confidence) VALUES (%s, NOW(), %s, %s)"
+			sql = "INSERT into AccessLog (Name, Time, Similarity, Confidence, Image) VALUES (%s, NOW(), %s, %s, %s)"
 			#print(sql)
-			curs.execute(sql, (person, similarity, confidence))
+			curs.execute(sql, (person, similarity, confidence, image))
 			db.commit()
 			curs.close()
 			db.close()
