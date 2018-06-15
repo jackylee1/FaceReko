@@ -22,15 +22,17 @@ def chart():
 	con = mysql.connector.connect(user=u,password=pw,host=h,database=db)
 	print("Database successfully connected")
 	cur = con.cursor()
-	query = "SELECT Time, Name, Similarity, Confidence FROM AccessLog ORDER BY Time DESC LIMIT 10"
+	query = "SELECT Time, Name, Similarity, Confidence FROM AccessLog ORDER BY Time LIMIT 10"
 	cur.execute(query)
-	for (Time, Name, Similarity, Confidence) in cur:
+	for (Time, Name, Similarity, Confidence, Image) in cur:
 		d = []
 		d.append("{:%d-%m-%Y %H:%M:%S}".format(Time))
 		d.append(Name)
 		d.append(Similarity)
 		d.append(Confidence)
-		data.append(d)    
+		d.append(Image)
+		data.append(d)
+    
 	print(data)
 	data_reversed = data[::-1]
 	
