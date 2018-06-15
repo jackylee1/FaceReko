@@ -32,9 +32,9 @@ def allowAccess():
 #Causes buzzer to sound for 1 second
 def buzz1sec():
 	buz.on()
-	time.sleep(1)
+	time.sleep(0.5)
 	buz.off()
-	time.sleep(1)
+	time.sleep(0.5)
 
 # Capture SIGINT for cleanup when the script is aborted
 def end_read(signal,frame):
