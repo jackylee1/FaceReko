@@ -48,7 +48,7 @@ Check frizting diagram/ image in repo for how to connect up the hardware.
 ##  Install:
 You can simply just copy *install.sh* to */home/pi/* and `sudo chmod +x install.sh` then run it with `sudo ./install.sh` to install all  pre-requisite packages, configure AWS and setup FaceReko files.
     
-Mid-run of *install.sh* you will be prompted with AWS config info (This is where your AWS credentials come in). When prompted **enter your AWS Key ID and Access Key**. The 3rd option will be for an **AWS server region which supports the Rekognition service** (eg. "ap-northeast-1" which is tokyo). A full list can be found at https://docs.aws.amazon.com/general/latest/gr/rande.html (ctrl-F "Rekognition"). 
+Mid-run of *install.sh* you will be prompted for AWS config info (This is where your AWS credentials you noted down earlier come in). For the first 2 prompts **enter your AWS Key ID then Access Key**. The 3rd option will be for an **AWS server region which supports the Rekognition service** (eg. "ap-northeast-1" which is tokyo). A full list of which servers support the service and their shorthands can be found at https://docs.aws.amazon.com/general/latest/gr/rande.html (ctrl-F "Rekognition"). 
 
 For the last option **just hit enter and leave default**.
 
