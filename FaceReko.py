@@ -45,7 +45,7 @@ def main():
 	except:
 		print("Error connecting to mySQL database")
 	
-	directory = 'templates/static/images'
+	directory = 'static/images'
 
 	#if not os.path.exists(directory):
 	#	os.makedirs(directory)
