@@ -18,6 +18,7 @@ ledGreen = LED(20)
 
 @app.route("/", methods=['POST', 'GET'])
 def login():
+	session['user'] = None
 	u, pw,h,db = 'root', 'dmitiot', 'localhost', 'FaceReko'
 	con = mysql.connector.connect(user=u,password=pw,host=h,database=db)
 	print("Database successfully connected")
@@ -27,6 +28,7 @@ def login():
 	if request.method == 'POST':
 		for (Username, Password) in cur:
 			if request.form['user'] == Username and request.form['pass']==Password:
+				session['user'] = request.form['user']
 				return redirect('/home')
 
 	return render_template('login.html')
@@ -37,6 +39,12 @@ def logout():
 	return redirect('/')
 
 @app.route("/home")
+def check():
+	if session.get('user') is None:
+		return redirect('/')
+	else:
+		return chart()
+
 def chart():
 	u, pw,h,db = 'root', 'dmitiot', 'localhost', 'FaceReko'
 	data = []
@@ -63,6 +71,12 @@ def chart():
 	#print('Rendered')
 
 @app.route("/activate/")
+def check2():
+	if session.get('user') is None:
+		return redirect('/')
+	else:
+		return activate()
+
 def activate():
 	extProc = sp.Popen(['python', 'rfid.py'])
 	pid = extProc.pid
@@ -75,6 +89,12 @@ def activate():
 	return render_template('trigger.html', **templateData)
 
 @app.route("/deactivate/")
+def check3():
+	if session.get('user') is None:
+		return redirect('/')
+	else:
+		return deactivate()
+
 def deactivate():
 	pid = session.get('proc', None)
 	session['status'] = 'Offline'
@@ -88,6 +108,12 @@ def deactivate():
 	return render_template('trigger.html', **templateData)
 
 @app.route("/<img>")
+def check4(img):
+	if session.get('user') is None:
+		return redirect('/')
+	else:
+		return display_image(img)
+
 def display_image(img):
 	full_filename = os.path.join(app.config['image_folder'], img)
 	return render_template('image.html', img = full_filename)
