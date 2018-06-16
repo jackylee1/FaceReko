@@ -11,13 +11,16 @@ rm -rf ~/.cache/pip
 echo 'Configuring AWS...'
 aws configure
 
-cd
+cd /home/pi
 
 echo 'Retreving repo files...'
 git clone https://github.com/yxkillz/FaceReko.git
 
-mkdir /FaceReko/static/images
-chmod 777 /FaceReko/static/images
+echo 'Adjusting permissions and creating folders'
+chown pi:pi FaceReko
+mkdir FaceReko/static
+mkdir FaceReko/static/images
+chmod 777 FaceReko/static/images
 
 echo 'Done!'
 
