@@ -18,7 +18,7 @@ Check frizting diagram/ image in repo for how to connect up the hardware.
 2. RFID tag ID is hardcoded in *rfid.py* under variable `hid`, change accordingly.
 3. Account creation is manual by inserting into db.
 4. MySQL login info in the codes has been hardcoded to my throwaway db, change/ setup accordingly.
-5. There is a collection variable in *FaceReko.py* which needs to be changed to whatever collection name you set to later in install.
+5. There is a `collection` variable in *FaceReko.py* which needs to be changed to whatever collection name you set to later in install.
 
 ## Pre-requisite setups:
   
