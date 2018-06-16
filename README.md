@@ -2,7 +2,7 @@
 School IoT project. Simple Raspberry Pi face recognition security system for something like a door.
 This project was created for a Raspberry Pi with default account pi (adjust install.sh if different) and a local mysql database.
 
-FaceReko hardware consists of a Raspberry Pi(duh), PiCamera, MFRC522 RFID scanner, a red LED, a green LED and a buzzer. (Check frizting diagram/ image for how to connect hardware).
+FaceReko hardware consists of a Raspberry Pi(duh), PiCamera, MFRC522 RFID scanner, a red LED, a green LED and a buzzer. (Check frizting diagram/ image in repo for how to connect hardware).
 
 The WebApp supports a login system with accounts in a MySQL DB. The FaceReko system can be turned ON or OFF from the WebApp along with viewing of access history with images.
 
@@ -37,11 +37,13 @@ The WebApp supports a login system with accounts in a MySQL DB. The FaceReko sys
 		```
   
 ##  Install:
-You can simply just copy install.sh to /home/pi and `sudo chmod +x install.sh` then run it with `sudo ./install.sh` to install all        pre-requisite packages, configure AWS and setup FaceReko files.
+You can simply just copy *install.sh* to */home/pi/* and `sudo chmod +x install.sh` then run it with `sudo ./install.sh` to install all        pre-requisite packages, configure AWS and setup FaceReko files.
     
-Mid-run of install.sh you will be prompted with AWS config info (This is where your AWS credentials come in). When prompted **enter your AWS Key ID and Access Key**. The 3rd option will be for an **AWS server region which supports the Rekognition service** (eg. ap-northeast-1 which is tokyo). A full list can be found at https://docs.aws.amazon.com/general/latest/gr/rande.html (ctrl-F "Rekognition"). 
+Mid-run of *install.sh* you will be prompted with AWS config info (This is where your AWS credentials come in). When prompted **enter your AWS Key ID and Access Key**. The 3rd option will be for an **AWS server region which supports the Rekognition service** (eg. ap-northeast-1 which is tokyo). A full list can be found at https://docs.aws.amazon.com/general/latest/gr/rande.html (ctrl-F "Rekognition"). 
 
 For the last option **just hit enter and leave default**.
+
+Once complete, there should be a folder named *FaceReko* in */home/pi/* and permissions for it setup. (If there are any permission issues with the program later on just manually `sudo` run the last couple `chmod & chown` commands in *install.sh*
 
 ## Usage:
 Simply `cd` into the FaceReko folder and run `python server.py`
