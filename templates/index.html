@@ -18,19 +18,21 @@
 
       function drawTable() {
         var data = new google.visualization.DataTable();
+	
         data.addColumn('string', 'Time');
         data.addColumn('string', 'Name');
         data.addColumn('string', 'Similarity');
-		data.addColumn('string', 'Confidence');
+	data.addColumn('string', 'Confidence');
+	data.addColumn('string', 'Image');
         data.addRows([
-			{% for Time, Name, Confidence, Similarity in data %}
-				['{{ Time }}', '{{ Name }}', '{{ Confidence }}', '{{Similarity}}'],
+			{% for Time, Name, Confidence, Similarity, Image in data %}
+				['{{ Time }}', '{{ Name }}', '{{Similarity}}', '{{ Confidence }}', '<a href="{{Image}}">View Image</a>'],
 			{% endfor %}
         ]);
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
-        table.draw(data, {showRowNumber: true, width: '30%', height: '30%'});
+        table.draw(data, {showRowNumber: true, allowHtml:true, width: '35%', height: '30%'});
       }
     </script>
   </head>
@@ -48,16 +50,6 @@
 	<tr><td colspan="2">System Status: {{status}}</td></tr>
 	</table>
 	</div>	
-
-        <!--Debug table
-	<table border="1">
-        {%- for Time, Name, Confidence, Similarity in data %}
-        <tr>
-        <td>{{ Time }}</td><td>{{Name}}</td><td>{{Similarity}}</td><td>{{Confidence}}</td>
-        </tr>
-        {%- endfor %}
-
-        </table>-->
         
   </body>
 </html>
