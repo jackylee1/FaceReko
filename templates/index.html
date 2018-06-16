@@ -1,8 +1,13 @@
 <!doctype html>
 <head>
 	<style>
-	#google_table{
-	padding-top:20px
+	
+	#control_panel{
+	padding-top: 20px;
+	}
+
+	#logout{
+	padding-top: 20px;
 	}
 	</style>
 
@@ -32,15 +37,15 @@
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
-        table.draw(data, {showRowNumber: true, allowHtml:true, width: '35%', height: '30%'});
+        table.draw(data, {showRowNumber: true, allowHtml:true, width: '35%', height: '35%'});
       }
     </script>
   </head>
   <body>
 	<h1>Access Log</h1>
-    <div id="table_div"></div>
+    	<div id="table_div"></div>
         
-	<div id="google_table">
+	<div id="control_panel">
 	<table border="1" cellpadding="5">
 	<tr><th colspan="2"><b>System Control</b></th></<tr>
 	<tr>
@@ -51,6 +56,9 @@
 	</table>
 	</div>	
         
+	<div id="logout">
+	<a href="/logout">Logout</a>
+	</div>
   </body>
 </html>
 
