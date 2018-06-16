@@ -82,11 +82,7 @@ def activate():
 	pid = extProc.pid
 	session['proc'] = pid
 	session['status'] = 'Active'
-	templateData = {
-	      		'title' : 'FaceReko',
-	      		'response' : 'Facial Recognition active'
-   			}
-	return render_template('trigger.html', **templateData)
+	return redirect('/home')
 
 @app.route("/deactivate/")
 def check3():
@@ -97,15 +93,16 @@ def check3():
 
 def deactivate():
 	pid = session.get('proc', None)
+	
+	if pid is None:
+		return redirect('/home')
+
 	session['status'] = 'Offline'
 	os.kill(pid, signal.SIGKILL)
 	ledRed.off()
 	ledGreen.off()
-	templateData = {
-	      		'title' : 'FaceReko',
-	      		'response' : 'Facial Recognition deactivated'
-   			}
-	return render_template('trigger.html', **templateData)
+	
+	return redirect('/home')
 
 @app.route("/<img>")
 def check4(img):
