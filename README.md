@@ -10,6 +10,7 @@ The WebApp supports a login system with accounts in a MySQL DB. The FaceReko sys
 1. RFID tag id is hardcoded in rfid.py, change accordingly.
 2. Account creation is manual by inserting into db.
 3. MySQL login info in the codes has been hardcoded to my throwaway db, change/ setup accordingly.
+4. There is a collection variable in *FaceReko.py* which needs to be changed to whatever collection name you set to later in install.
 
 ## Pre-requisite setups:
   
@@ -37,13 +38,22 @@ The WebApp supports a login system with accounts in a MySQL DB. The FaceReko sys
 		```
   
 ##  Install:
-You can simply just copy *install.sh* to */home/pi/* and `sudo chmod +x install.sh` then run it with `sudo ./install.sh` to install all        pre-requisite packages, configure AWS and setup FaceReko files.
+You can simply just copy *install.sh* to */home/pi/* and `sudo chmod +x install.sh` then run it with `sudo ./install.sh` to install all  pre-requisite packages, configure AWS and setup FaceReko files.
     
-Mid-run of *install.sh* you will be prompted with AWS config info (This is where your AWS credentials come in). When prompted **enter your AWS Key ID and Access Key**. The 3rd option will be for an **AWS server region which supports the Rekognition service** (eg. ap-northeast-1 which is tokyo). A full list can be found at https://docs.aws.amazon.com/general/latest/gr/rande.html (ctrl-F "Rekognition"). 
+Mid-run of *install.sh* you will be prompted with AWS config info (This is where your AWS credentials come in). When prompted **enter your AWS Key ID and Access Key**. The 3rd option will be for an **AWS server region which supports the Rekognition service** (eg. "ap-northeast-1" which is tokyo). A full list can be found at https://docs.aws.amazon.com/general/latest/gr/rande.html (ctrl-F "Rekognition"). 
 
 For the last option **just hit enter and leave default**.
 
 Once complete, there should be a folder named *FaceReko* in */home/pi/* and permissions for it setup. (If there are any permission issues with the program later on just manually `sudo` run the last couple `chmod & chown` commands in *install.sh*).
+
+From here `cd` into the FaceReko folder.
+
+### AWS Rekognition setup
+Run `python add_collection.py -n 'home'` (Replace 'home' with whatever you want to call your collection, remember to change the collection variable accordingly in *FaceReko.py*)
+
+Run `python take_selfie.py` to take a photo of you or the person you want recognised. It will be saved in the same folder as *selfie.jpg*.
+
+Run `python add_image.py -i 'selfie.jpg' -c 'home' -l 'Name'` (Replace 'home' with your collection name from earlier and 'Name' with the name of the person in *selfie.jpg*.
 
 ## Usage:
 Simply `cd` into the FaceReko folder and run `python server.py`
