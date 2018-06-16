@@ -57,7 +57,7 @@ Once complete, there should be a folder named *FaceReko* in */home/pi/* and perm
 From here `cd` into the FaceReko folder.
 
 ### AWS Rekognition setup
-Run `python add_collection.py -n 'home'` (Replace 'home' with whatever you want to call your collection, remember to change the collection variable accordingly in *FaceReko.py*)
+Run `python add_collection.py -n 'home'` (Replace 'home' with whatever you want to call your collection, remember to change the `collection` variable accordingly in *FaceReko.py*)
 
 Run `python take_selfie.py` to take a photo of you or the person you want recognised. It will be saved in the same folder as *selfie.jpg*.
 
