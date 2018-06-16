@@ -1,10 +1,17 @@
 # FaceReko
 School IoT project. Simple Raspberry Pi face recognition security system for something like a door.
-This project was created for a Raspberry Pi with default account pi (adjust install.sh if different) and a local mysql database.
-
-FaceReko hardware consists of a Raspberry Pi(duh), PiCamera, MFRC522 RFID scanner, a red LED, a green LED and a buzzer. (Check frizting diagram/ image in repo for how to connect hardware).
+This project was created for a Raspberry Pi with default account pi (adjust install.sh if different), a local mysql database and runs a simple WebApp.
 
 The WebApp supports a login system with accounts in a MySQL DB. The FaceReko system can be turned ON or OFF from the WebApp along with viewing of access history with images.
+
+## Hardware requirements:
+Check frizting diagram/ image in repo for how to connect up the hardware.
+
+- Raspberry Pi (Duh)
+- PiCamera
+- MFRC522 RFID reader and RFID card
+- Red & Green LED diodes
+- Buzzer
 
 ## Things to note: 
 1. RFID tag id is hardcoded in rfid.py, change accordingly.
