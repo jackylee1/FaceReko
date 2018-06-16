@@ -15,7 +15,7 @@ Check frizting diagram/ image in repo for how to connect up the hardware.
 
 ## Things to note: 
 1. Default Pi account is used in *install.sh*, change accordingly if needed.
-2. RFID tag id is hardcoded in rfid.py, change accordingly.
+2. RFID tag id is hardcoded in *rfid.py*, change accordingly.
 3. Account creation is manual by inserting into db.
 4. MySQL login info in the codes has been hardcoded to my throwaway db, change/ setup accordingly.
 5. There is a collection variable in *FaceReko.py* which needs to be changed to whatever collection name you set to later in install.
