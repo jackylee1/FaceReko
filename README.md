@@ -28,7 +28,7 @@ Check frizting diagram/ image in repo for how to connect up the hardware.
   3) Go to Security Credentials tab in IAM users page, generate and note down your aws_access_key_secret and aws_access_key_id
 
 ###  Local MySQL DB
-  1) Install it, create accounts etc... Import given sql file or follow steps 2 - 4 to create database and tables.
+  1) Install it, create accounts etc...(If needed) Import given sql file or follow steps 2 - 4 to create database and tables.
   2) Create a database called "FaceReko" 
   3) Create table "AccessLog" with the following columns and data types(Column Name, Data Type): 
 		```
