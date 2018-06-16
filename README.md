@@ -1,6 +1,6 @@
 # FaceReko
 School IoT project. Simple Raspberry Pi face recognition security system for something like a door.
-This project was created for a Raspberry Pi with default account pi (adjust install.sh if different), a local mysql database and runs a simple WebApp.
+This project was created for a Raspberry Pi with default account pi (adjust *install.sh* if different), a local mysql database and runs a simple WebApp.
 
 The WebApp supports a login system with accounts in a MySQL DB. The FaceReko system can be turned ON or OFF from the WebApp along with viewing of access history with images.
 
@@ -14,10 +14,11 @@ Check frizting diagram/ image in repo for how to connect up the hardware.
 - Buzzer
 
 ## Things to note: 
-1. RFID tag id is hardcoded in rfid.py, change accordingly.
-2. Account creation is manual by inserting into db.
-3. MySQL login info in the codes has been hardcoded to my throwaway db, change/ setup accordingly.
-4. There is a collection variable in *FaceReko.py* which needs to be changed to whatever collection name you set to later in install.
+1. Default Pi account is used in *install.sh*, change accordingly if needed.
+2. RFID tag id is hardcoded in rfid.py, change accordingly.
+3. Account creation is manual by inserting into db.
+4. MySQL login info in the codes has been hardcoded to my throwaway db, change/ setup accordingly.
+5. There is a collection variable in *FaceReko.py* which needs to be changed to whatever collection name you set to later in install.
 
 ## Pre-requisite setups:
   
