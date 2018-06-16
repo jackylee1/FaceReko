@@ -43,7 +43,7 @@ Mid-run of *install.sh* you will be prompted with AWS config info (This is where
 
 For the last option **just hit enter and leave default**.
 
-Once complete, there should be a folder named *FaceReko* in */home/pi/* and permissions for it setup. (If there are any permission issues with the program later on just manually `sudo` run the last couple `chmod & chown` commands in *install.sh*
+Once complete, there should be a folder named *FaceReko* in */home/pi/* and permissions for it setup. (If there are any permission issues with the program later on just manually `sudo` run the last couple `chmod & chown` commands in *install.sh*).
 
 ## Usage:
 Simply `cd` into the FaceReko folder and run `python server.py`
