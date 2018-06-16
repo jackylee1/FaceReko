@@ -45,10 +45,10 @@ def main():
 	except:
 		print("Error connecting to mySQL database")
 	
-	directory = 'images'
+	directory = 'templates/static/images'
 
-	if not os.path.exists(directory):
-		os.makedirs(directory)
+	#if not os.path.exists(directory):
+	#	os.makedirs(directory)
 
 	print 'A photo will be taken in 2 seconds...'
 
@@ -57,7 +57,9 @@ def main():
 		time.sleep(1)
 
 	milli = int(round(time.time() * 1000))
-	image = '{0}/image_{1}.jpg'.format(directory, milli)
+	img_save= 'image_{0}.jpg'.format(milli)
+	image = '{0}/{1}'.format(directory, img_save)
+	#img_save = image.replace('.jpg', '')
 	camera.capture(image)
 	print 'Your image was saved to %s' % image
 	
@@ -79,7 +81,7 @@ def main():
 			
 			sql = "INSERT into AccessLog (Name, Time, Similarity, Confidence, Image) VALUES (%s, NOW(), %s, %s, %s)"
 			#print(sql)
-			curs.execute(sql, (person, similarity, confidence, image))
+			curs.execute(sql, (person, similarity, confidence, img_save))
 			db.commit()
 			curs.close()
 			db.close()

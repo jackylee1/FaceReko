@@ -16,6 +16,9 @@ cd
 echo 'Retreving repo files...'
 git clone https://github.com/yxkillz/FaceReko.git
 
+mkdir /FaceReko/static/images
+chmod 777 /FaceReko/static/images
+
 echo 'Done!'
 
 exit 0
