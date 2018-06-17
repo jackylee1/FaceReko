@@ -1,8 +1,12 @@
 # FaceReko
 School IoT project. Simple Raspberry Pi face recognition security system for something like a door.
-This project was created for a Raspberry Pi with default account pi (adjust *install.sh* if different), a local mysql database and runs a simple WebApp.
+This project leverages Amazon's Rekognition service and was created for a Raspberry Pi with default account pi (adjust *install.sh* if different), a local mysql database and runs a simple WebApp.
 
 The WebApp supports a login system with accounts in a MySQL DB. The FaceReko system can be turned ON or OFF from the WebApp along with viewing of access history with images.
+
+FaceReko is currently built with being a door security system in mind. Tapping of an RFID card triggers facial recognition with a buzzer giving audio cues and LEDs representing access allowed or denied.
+
+When activated, the system beeps when a card is tapped. If the card is recognised, the camera will begin facial recognition with AWS Rekognition. If the person is recognised, a long beep is presented and the LEDs turns from Red to Green for 10 seconds, signifying access. Else the buzzer will sound 3 times if the person is not recognised and the red LED remains lit.
 
 ## Hardware requirements:
 Check frizting diagram/ image in repo for how to connect up the hardware.
@@ -67,9 +71,11 @@ Run `python add_image.py -i 'selfie.jpg' -c 'home' -l 'Name'` (Replace 'home' wi
 Simply `cd` into the FaceReko folder and run `python server.py`
 
 The webapp will be running on raspberryPi IP:5000
+
+*How to use, to be added*
 	
 ## TODO:
-- Account creation front-end
+~~- Account creation front-end~~ (Done)
 - Secure passwords with hashing
 - Merge AWS Rekognition setup into front-end
 - Save RFID card uid to DB
