@@ -38,6 +38,25 @@ def logout():
 	session.clear()
 	return redirect('/')
 
+@app.route("/createacc", methods=['POST','GET'])
+def createAcc():
+	u, pw,h,db = 'root', 'dmitiot', 'localhost', 'FaceReko'
+	con = mysql.connector.connect(user=u,password=pw,host=h,database=db)
+	print("Database successfully connected")
+	cur = con.cursor()
+	
+	
+	if request.method == 'POST':
+		sql = "INSERT into Login (Username, Password) VALUES (%s, %s)"
+		cur.execute(sql, (request.form['user'], request.form['pass']))
+		con.commit()
+		cur.close()
+		con.close()
+		print("Success")
+		return redirect('/')
+
+	return render_template('createAcc.html')	
+
 @app.route("/home")
 def check():
 	if session.get('user') is None:
