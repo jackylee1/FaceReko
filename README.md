@@ -75,7 +75,6 @@ The webapp will be running on raspberryPi IP:5000
 *How to use, to be added*
 	
 ## TODO:
-~~- Account creation front-end~~ (Done)
 - Secure passwords with hashing
 - Merge AWS Rekognition setup into front-end
 - Save RFID card uid to DB
