@@ -19,10 +19,9 @@ Check frizting diagram/ image in repo for how to connect up the hardware.
 
 ## Things to note: 
 1. Default Pi account is used in *install.sh*, change accordingly if needed.
-2. RFID tag ID is hardcoded in *rfid.py* under variable `hid`, change accordingly.
-3. Account creation is manual by inserting into db.
-4. MySQL login info in the codes has been hardcoded to my throwaway db, change/ setup accordingly.
-5. There is a `collection` variable in *FaceReko.py* which needs to be changed to whatever collection name you set to later in install.
+2. RFID card ID is hardcoded in *rfid.py* under variable `hid`, change accordingly. *check_card.py* can be used to find your card ID.
+3. MySQL login info in the codes has been hardcoded to my throwaway db, change/ setup accordingly.
+4. There is a `collection` variable in *FaceReko.py* which needs to be changed to whatever collection name you set to later in install.
 
 ## Pre-requisite setups:
   
@@ -70,13 +69,18 @@ Run `python add_image.py -i 'selfie.jpg' -c 'home' -l 'Name'` (Replace 'home' wi
 ## Usage:
 Simply `cd` into the FaceReko folder and run `python server.py`
 
-The webapp will be running on raspberryPi IP:5000
+The webapp will be running on port 5000 (raspberryPi_IP:5000)
 
-*How to use, to be added*
+Once you enter the address into your browser URL bar, you will be presented with the login screen. Hit the Create Account button and create an account, regex is in place so only alpha numeric upto 30 characters are allowed. Once done proceed to login.
+
+After login you are presented with the home screen. The access log chart displays up to the last 10 people who were recognised by the facial recognition system. The chart shows name of the person recognised, time they gained access as well as similarity and confidence of that recognition and lastly there is the option to view the taken image of the person during that facial recognition request.
+
+Below the chart is the control panel which displays the current status of the security system (Active or Offline) and controls to activate or deactivate the security system.
+
+So to use the security system, simply activate it, scan your RFID card (buzzer beeps on card scan), face the camera. If recognised as an authorized person you will hear a long beep and the LEDs will change from red to green. Otherwise you will hear 3 beeps to signify access denied, unrecognised person.
 	
 ## TODO:
 - Secure passwords with hashing
 - Merge AWS Rekognition setup into front-end
 - Save RFID card uid to DB
 	- RFID card registration front-end
-- Add way to find your card UID
