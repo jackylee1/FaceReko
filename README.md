@@ -66,6 +66,13 @@ Run `python take_selfie.py` to take a photo of you or the person you want recogn
 
 Run `python add_image.py -i 'selfie.jpg' -c 'home' -l 'Name'` (Replace 'home' with your collection name from earlier and 'Name' with the name of the person in *selfie.jpg*.
 
+### Edit variables
+In *FaceReko.py* and *server.py* change MySQL connection info if needed.
+
+Run `python check_card.py` and tap your card on the reader to find out your card's UID. Edit *rfid.py*, look for the hid variable and change the numbers to your card's UID.
+
+Lastly for this section, edit *FaceReko.py* and look for the `collection` variable. Change this to whatever you named your collection earlier.
+
 ## Usage:
 Simply `cd` into the FaceReko folder and run `python server.py`
 
